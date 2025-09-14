@@ -5,7 +5,7 @@ import pandas as pd
 if "dados" not in st.session_state:
     st.session_state["dados"] = pd.DataFrame(columns=["Categoria", "Valor"])
 
-st.title("📊 Controle Financeiro Simples")
+st.title("📊 Controle Financeiro")
 
 # Campo de entrada de mensagens
 entrada = st.text_input("Digite uma anotação (ex: 'Faturamento 424' ou 'Combustível 84')")
@@ -38,6 +38,7 @@ if not st.session_state["dados"].empty:
     faturamento = resumo.loc[resumo["Categoria"] == "Faturamento", "Valor"].sum()
     despesas = resumo.loc[resumo["Categoria"] != "Faturamento", "Valor"].sum()
     liquido = faturamento - despesas
+    liquido = faturamento = categoria
 
     col1, col2, col3 = st.columns(3)
     col1.metric("Faturamento Bruto", f"R$ {faturamento:.2f}")
